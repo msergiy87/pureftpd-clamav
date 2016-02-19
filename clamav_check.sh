@@ -3,16 +3,16 @@ export PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH
 
 #set -x
 # Script for detect viruses from FTP
-# result is here /var/log/removed_files.log
+# result is here /tmp/quarantine/ftp_moved_files.log
 
-DATE=`date`
+DATE=`date +%d-%m-%Y_%H:%M:%S`
 HOST=`hostname -f`
 EMAILTO="hosting-security@example.com"
 
 SUBJECT="detected by ClamAV from FTP on"
-EMAILMESSAGE="/tmp/quarantine/mail.log"
-OUT="/tmp/quarantine/out.log"
-ALLOG="/var/log/removed_files.log"
+EMAILMESSAGE="/tmp/quarantine/ftp_mail.log"
+OUT="/tmp/quarantine/ftp_out.log"
+ALLOG="/tmp/quarantine/ftp_moved_files.log"
 
 # check conditions
 #------------------------------------------------------------------------------------------
@@ -33,7 +33,7 @@ then
 # Scan the uploaded file. Move to quarantine if suspicious
 #------------------------------------------------------------------------------------------
 
-	/usr/bin/clamdscan -i --move=/tmp/quarantine --fdpass --no-summary --stdout>$OUT --log=$ALLOG "$1"
+	/usr/bin/clamdscan -i --move=/tmp/quarantine --fdpass --no-summary --stdout>$OUT "$1"
 
 	#/usr/bin/clamdscan --move=/tmp/quarantine --fdpass --quiet --no-summary --log=/var/log/removed_files.log "$1"
 	#/usr/bin/clamdscan --remove --fdpass --quiet --no-summary --log=/var/log/removed_files.log "$1"
@@ -49,8 +49,10 @@ if [ $CODE -eq 1 ]							# equal
 then
 	echo "Date: $DATE" > $EMAILMESSAGE
 	echo "Foud some viruses during transfer FTP in" >> $EMAILMESSAGE
-	cat "$OUT" >> $EMAILMESSAGE
+	echo "----------------------------------------------------------" >> $EMAILMESSAGE
+	cat $OUT >> $EMAILMESSAGE
 	echo "" >> $EMAILMESSAGE
+	cat $EMAILMESSAGE >> $ALLOG 
 #	echo "Please, run for check /usr/bin/clamscan -i -r /tmp/quarantine" >> $EMAILMESSAGE
 	/usr/bin/mail -s "Vriruses $SUBJECT $HOST" "$EMAILTO" < $EMAILMESSAGE
 	/bin/chmod 000 /tmp/quarantine/* > /dev/null 2>&1
@@ -61,7 +63,10 @@ elif [ $CODE -eq 2 ]							# equal
 then
 	echo "Date: $DATE" > $EMAILMESSAGE
 	echo "Foud some errors during scanning from ClamAV transfer FTP in" >> $EMAILMESSAGE
-	cat "$OUT" >> $EMAILMESSAGE
+	echo "----------------------------------------------------------" >> $EMAILMESSAGE
+	cat $OUT >> $EMAILMESSAGE
+	echo "" >> $EMAILMESSAGE
+	cat $EMAILMESSAGE >> $ALLOG
 #	/usr/bin/mail -s "Errors $SUBJECT $HOST" "$EMAILTO" < $EMAILMESSAGE
 
 else exit 0
