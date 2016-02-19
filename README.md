@@ -27,3 +27,11 @@ Just copy script and set rights.
 ```
 chmod 755 /root/scripts/clamav_check.sh
 ```
+
+Test with:
+
+Debian 7.9
+
+ClamAV 0.98.7
+
+PureFTPd 1.0.36
