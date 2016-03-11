@@ -3,7 +3,7 @@ export PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH
 
 #set -x
 # Script for detect viruses from FTP
-# result is here /tmp/quarantine/ftp_moved_files.log
+# result is here /var/log/clamav/ftp-clamdscan.log
 
 DATE=$(date +%d-%m-%Y_%H:%M:%S)
 HOST=$(hostname -f)
@@ -12,7 +12,7 @@ EMAILTO="hosting-security@example.com"
 SUBJECT="detected by ClamAV from FTP on"
 EMAILMESSAGE="/tmp/quarantine/ftp_mail.log"
 OUT="/tmp/quarantine/ftp_out.log"
-ALLOG="/tmp/quarantine/ftp_moved_files.log"
+ALLOG="/var/log/clamav/ftp-clamdscan.log"
 
 # check conditions
 #------------------------------------------------------------------------------------------
@@ -22,6 +22,21 @@ then
 	chmod 740 /tmp/quarantine -R > /dev/null 2>&1
 	chmod g+s /tmp/quarantine -R > /dev/null 2>&1
 fi
+
+	if [ ! -f /etc/logrotate.d/ftp-clamdscan ]
+	then
+		cat > /etc/logrotate.d/ftp-clamdscan <<- _EOF_
+		/var/log/clamav/ftp-clamdscan.log {
+		     weekly
+		     missingok
+		     rotate 12
+		     compress
+		     delaycompress
+		     notifempty
+		     create 640  clamav adm
+		}
+		_EOF_
+	fi
 
 # Exclude FTP requests from temporary files
 #------------------------------------------------------------------------------------------
