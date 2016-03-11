@@ -32,7 +32,7 @@ then
 # Scan the uploaded file. Move to quarantine if suspicious
 #------------------------------------------------------------------------------------------
 
-	clamdscan -i --move=/tmp/quarantine --fdpass --quiet --no-summary --stdout>$OUT "$1"
+	clamdscan -i --move=/tmp/quarantine --fdpass --no-summary --stdout>$OUT "$1"
 
 	# clamdscan --move=/tmp/quarantine --fdpass --quiet --no-summary --log=/var/log/removed_files.log "$1"
 	# clamdscan --remove --fdpass --quiet --no-summary --log=/var/log/removed_files.log "$1"
