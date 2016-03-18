@@ -1,12 +1,11 @@
 # pureftpd-clamav
 This is script that you should use with PureFTPd and ClamAV for virus scanning on a fly.
 
-For configuration pure-ftpd i use this tutorial 
+For configuration pure-ftpd i use this tutorial https://www.howtoforge.com/how-to-integrate-clamav-into-pureftpd-for-virus-scanning-on-debian-squeeze
 
 Requirements
 ------------
 
-https://www.howtoforge.com/how-to-integrate-clamav-into-pureftpd-for-virus-scanning-on-debian-squeeze
 
 Install ClamAV
 ```
