@@ -3,6 +3,10 @@ This is script that you should use with PureFTPd and ClamAV for virus scanning o
 
 For configuration pure-ftpd i use this tutorial 
 
+Requirements
+------------
+
+
 Usage
 ------------
 
@@ -32,12 +36,3 @@ Just copy script and set rights.
 ```
 chmod 755 /root/scripts/clamav_check.sh
 ```
-
-Distros tested
-------------
-
-Currently, this is only tested on Debian 7.9. It should theoretically work on older versions of Ubuntu or Debian based systems.
-
-ClamAV 0.98.7
-
-PureFTPd 1.0.36
