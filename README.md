@@ -3,6 +3,9 @@ This is script that you should use with PureFTPd and ClamAV for virus scanning o
 
 For configuration pure-ftpd i use this tutorial 
 
+Usage
+------------
+
 https://www.howtoforge.com/how-to-integrate-clamav-into-pureftpd-for-virus-scanning-on-debian-squeeze
 
 Install ClamAV
@@ -30,9 +33,10 @@ Just copy script and set rights.
 chmod 755 /root/scripts/clamav_check.sh
 ```
 
-Test with:
+Distros tested
+------------
 
-Debian 7.9
+Currently, this is only tested on Debian 7.9. It should theoretically work on older versions of Ubuntu or Debian based systems.
 
 ClamAV 0.98.7
 
