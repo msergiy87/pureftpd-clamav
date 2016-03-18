@@ -6,10 +6,6 @@ For configuration pure-ftpd i use this tutorial
 Requirements
 ------------
 
-
-Usage
-------------
-
 https://www.howtoforge.com/how-to-integrate-clamav-into-pureftpd-for-virus-scanning-on-debian-squeeze
 
 Install ClamAV
@@ -20,6 +16,19 @@ Install PureFTPd
 ```
 apt-get install pure-ftpd-common pure-ftpd-mysql
 ```
+
+Distros tested
+------------
+
+Currently, this is only tested on Debian 7.9. It should theoretically work on older versions of Ubuntu or Debian based systems.
+
+ClamAV 0.98.7
+
+PureFTPd 1.0.36
+
+Usage
+------------
+
 Configure PureFTPd
 ```
 vim /etc/default/pure-ftpd-common
