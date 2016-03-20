@@ -32,6 +32,7 @@ fi
 		     rotate 12
 		     compress
 		     delaycompress
+		     minsize 1048576
 		     notifempty
 		     create 640  clamav adm
 		}
