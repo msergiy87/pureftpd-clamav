@@ -34,7 +34,7 @@ fi
 		     delaycompress
 		     minsize 1048576
 		     notifempty
-		     create 640  clamav adm
+		     create 640 clamav adm
 		}
 		_EOF_
 	fi
