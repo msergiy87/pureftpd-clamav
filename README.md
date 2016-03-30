@@ -21,7 +21,7 @@ Distros tested
 
 Currently, this is only tested on Debian 7.9. It should theoretically work on older versions of Ubuntu or Debian based systems.
 
-ClamAV 0.98.7
+ClamAV 0.99
 
 PureFTPd 1.0.36
 
