@@ -61,9 +61,15 @@ fi
 
 CODE="$?"
 
+# no problems
+#------------------------------------------------------------------------------------------
+if [ 0 -eq "$CODE" ]							# equal
+then
+	exit 0
+
 # send email with viruses
 #------------------------------------------------------------------------------------------
-if [ 1 -eq "$CODE" ]							# equal 
+elif [ 1 -eq "$CODE" ]							# equal 
 then
 	echo "Date: $DATE" > $EMAILMESSAGE
 
