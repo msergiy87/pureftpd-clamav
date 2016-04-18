@@ -24,21 +24,21 @@ then
 	chmod g+s /tmp/quarantine -R > /dev/null 2>&1
 fi
 
-	if [ ! -f /etc/logrotate.d/ftp-clamdscan ]
-	then
-		cat > /etc/logrotate.d/ftp-clamdscan <<- _EOF_
-		/var/log/clamav/ftp-clamdscan.log {
-		     weekly
-		     missingok
-		     rotate 12
-		     compress
-		     delaycompress
-		     minsize 1048576
-		     notifempty
-		     create 640 clamav adm
-		}
-		_EOF_
-	fi
+if [ ! -f /etc/logrotate.d/ftp-clamdscan ]
+then
+	cat > /etc/logrotate.d/ftp-clamdscan <<- _EOF_
+	/var/log/clamav/ftp-clamdscan.log {
+	     weekly
+	     missingok
+	     rotate 12
+	     compress
+	     delaycompress
+	     minsize 1048576
+	     notifempty
+	     create 640 clamav adm
+	}
+	_EOF_
+fi
 
 # Exclude FTP requests from temporary files
 #------------------------------------------------------------------------------------------
