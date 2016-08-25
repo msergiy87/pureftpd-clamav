@@ -45,4 +45,4 @@ Just copy script and set rights.
 chmod 755 /root/scripts/clamav_check.sh
 ```
 
-![pureftpd-clamav](https://github.com/msergiy87/pureftpd-clamav/blob/master/ispc.jpg)
+![ispc](https://github.com/msergiy87/pureftpd-clamav/blob/master/ispc.jpg)
