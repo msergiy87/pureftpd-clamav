@@ -49,20 +49,20 @@ chmod 755 /root/scripts/clamav_check.sh
 ISP-Config: Deploy hosting control panel
 
 Goal: 
-1. Deploy hosting control panel and transfer sites from old hosting. 
-2. Protect sites using antivirus programs. 
-3. Configuring Linux disk quotas to limit user disk resources. 
-4. Configure iptables. 
-5. Rotate log files.
-6. Create statistics.  
+1) Deploy hosting control panel and transfer sites from old hosting.
+2) Protect sites using antivirus programs. 
+3) Configuring Linux disk quotas to limit user disk resources. 
+4) Configure iptables. 
+5) Rotate log files.
+6) Create statistics.  
 
 Deployed hosting control panel, that consist of:
-1. Master server - with web interface of panel for management.
-2. Slave servers - with sites (50 per server), webserver, mysql bases, ftp users. 
+1) Master server - with web interface of panel for management.
+2) Slave servers - with sites (50 per server), webserver, mysql bases, ftp users. 
 
 Result:
-1. Transferred 50 sites to the ISP-Config. 
-2. Wrote scripts to automate administrative tasks of hosting control. 
-3. Protect servers from attacks.
+1) Transferred 50 sites to the ISP-Config. 
+2) Wrote scripts to automate administrative tasks of hosting control. 
+3) Protect servers from attacks.
 
 ![ispc](https://github.com/msergiy87/pureftpd-clamav/blob/master/ispc.jpg)
