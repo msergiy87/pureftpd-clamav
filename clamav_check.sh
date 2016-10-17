@@ -53,9 +53,11 @@ then
 	# clamdscan --remove --fdpass --quiet --no-summary --log=/var/log/removed_files.log "$1"
 
 else
-	echo "Date: $DATE" >> $ALLOG
-	echo "Exclude tmp file $SCAN_FILE from scanning" >> $ALLOG
-	echo "" >> $ALLOG
+	{
+		echo "Date: $DATE";
+		echo "Exclude tmp file $SCAN_FILE from scanning";
+		echo ' '
+	} >> $ALLOG
 	exit 113
 fi
 
@@ -69,7 +71,7 @@ then
 
 # send email with viruses
 #------------------------------------------------------------------------------------------
-elif [ 1 -eq "$CODE" ]							# equal 
+elif [ 1 -eq "$CODE" ]							# equal
 then
 	echo "Date: $DATE" > $EMAILMESSAGE
 
@@ -86,7 +88,7 @@ then
 
 # send email with errors
 #------------------------------------------------------------------------------------------
-elif [ 2 -eq "$CODE" ]							# equal 
+elif [ 2 -eq "$CODE" ]							# equal
 then
 	echo "Date: $DATE" > $EMAILMESSAGE
 
